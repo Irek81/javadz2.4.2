@@ -8,16 +8,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BonusServiceTest {
   @ParameterizedTest
-  @CsvSource(
-      {
-          "'registered user, bonus under limit',100060,true,30",
-          "'registered user, bonus over limit',100000060,true,500",
-              "'registered user, bonus under limit',100060,false,10",
-              "'registered user, bonus over limit',100000060,false,500"
-      }
-  )
-//  @CsvFileSource(resources = "/data.csv")
-  void shouldCalculate(String test, long amount, boolean registered, long expected) {
+//  @CsvSource(
+//      {
+//          "'registered user, bonus under limit',100060,true,30",
+//          "'registered user, bonus over limit',100000060,true,500",
+//              "'registered user, bonus under limit',100060,false,10",
+//              "'registered user, bonus over limit',100000060,false,500"
+//      }
+//  )
+  @CsvFileSource(resources = "/data.csv")
+  void shouldCalculate( String test, long amount, boolean registered, long expected) {
     BonusService service = new BonusService();
 
     // вызываем целевой метод:
